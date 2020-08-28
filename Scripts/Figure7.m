@@ -10,6 +10,7 @@ ti = [-100 0];
 tf = [0 240]; tminplot = -80;
 tmax = tf(end);
 tmin = -80;
+dt = 0.005;
 factRtcrit = 0.95;
 loc = 'northwest';
 Phi = 15;
@@ -44,7 +45,6 @@ x0 = [Te;He;Hse];
 %% Problema directo
 N_hat = [];
 N_sum = [];
-dt = 0.1;
 t = ti(1):dt:tf(end);
 X = [];
 rt = [Rt 2];
@@ -64,16 +64,22 @@ for j = 1:length(ti)
 end
 x = X; 
 
+%% Discretizacion
+
+idx = t==floor(t);
+T = t(idx);
+N_hat = N_hat(idx);
+N_sum = N_sum(idx);
+
 %% Calculo de los casos nuevos por d?a
 
-N_hat_obs = EstimDelay(N_hat,4,1,0.9);
+N_hat_obs = EstimDelay(N_hat,4,1,0.95);
 tau = 4;
 Rt_hat_obs = N_hat_obs./[NaN(tau,1) ; N_hat_obs(1:end-tau)];
 tau = 4;
-N_T = EstimDelay(N_sum,4,1,0.9);
+N_T = EstimDelay(N_sum,4,1,0.95);
 Rt_hat = N_T./[NaN(tau,1) ; N_T(1:end-tau)];
-idx = t==floor(t);
-T = t(idx);
+
 
 %% Visualizaci?n
 
@@ -126,6 +132,10 @@ plot(T,N_hat_obs,lt,'Color',or1,'LineWidth',3*fact_curva)
 hold on
 plot(T,N_sum,ls,'Color',or2,'LineWidth',3*fact_curva)
 hold on
+% plot(T,Nsumobs,lt,'Color',or3,'LineWidth',3*fact_curva)
+% hold on
+
+plot([tmin tmax],[Neqcrit Neqcrit],'k--','LineWidth',3*fact_curva)
 legend({'$\hat{N}^{\mbox{obs}}$','$N$'},'interpreter','latex','FontSize',15*fact_axis);
 set(gca,'FontSize',15*fact_axis)
 hold on
@@ -155,7 +165,7 @@ plot(tmin:1:tmax,exp(tau*mode1)*ones(size(tmin:1:tmax)),'k:','LineWidth',2*fact_
 hold on
 plot(tmin:1:tmax,exp(tau*mode2)*ones(size(tmin:1:tmax)),'k--','LineWidth',2*fact_curva,'HandleVisibility','off');
 hold on
-legend({'$\hat{R}_t^{\mbox{obs}}$','$\hat{R}_t$'},'interpreter','latex','FontSize',15*fact_axis);
+% legend({'$\hat{R}_t^{\mbox{obs}}$','$\hat{R}_t$'},'interpreter','latex','FontSize',15*fact_axis);
 set(gca,'FontSize',15*fact_axis)
 hold on
 xlabel('days','interpreter','latex','FontSize',15*fact_label)

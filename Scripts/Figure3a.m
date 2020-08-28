@@ -11,7 +11,7 @@ tf = [0 360];
 tmax = tf(end);
 tmin = -20;
 nmax = 300; 
-
+dt = 0.005;
 
 %% Variables iniciales (default)
 % 
@@ -37,7 +37,6 @@ RT = linspace(0,Rtcrit,nrt);
 
 %% Definici?n par?metros barrido
 
-dt = 0.1;
 t = ti(1):dt:tf(end);
 
 kmax = length(RT);

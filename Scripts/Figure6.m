@@ -6,9 +6,9 @@ clc
 
 %% Par?metros solver
 
-tmin = -80; tminplot = -50;
+tmin = -80; tminplot = -20;
 tmax = 90;
-dt = 0.1;
+dt = 0.005;
 t = tmin:dt:tmax;
 ylimsupI = 1e4;
 ylimsupN = 2e3;
@@ -17,7 +17,7 @@ factRtcrit = 0.95;
 loc = 'northeast';
 Phimax = 4e3;
 Phi = 15;
-nmax = 200;
+nmax = 300;
 eta = 0.66;
 
 %% Definici?n de variables
@@ -53,16 +53,21 @@ x = x';
 N_hat = newInfections(t,x,Gamma,nu,Rt,lambda_s,lambda_r,nmax,eta);
 N_sum = newInfections_Total(t,x,Gamma,nu,epsilon,Rt,PHI(t,0,2,Phi,Phimax));
 
+%% Discretizacion
+
+idx = t==floor(t);
+T = t(idx);
+N_hat = N_hat(idx);
+N_sum = N_sum(idx);
+
 %% Calculo de los casos nuevos por d?a
 
-N_hat_obs = EstimDelay(N_hat,4,1,0.9);
+N_hat_obs = EstimDelay(N_hat,4,1,0.95);
 tau = 4;
 Rt_hat_obs = N_hat_obs./[NaN(tau,1) ; N_hat_obs(1:end-tau)];
 tau = 4;
-N_T = EstimDelay(N_sum,4,1,0.9);
+N_T = EstimDelay(N_sum,4,1,0.95);
 Rt_hat = N_T./[NaN(tau,1) ; N_T(1:end-tau)];
-idx = t==floor(t);
-T = t(idx);
 
 %% Visualizaci?n
 

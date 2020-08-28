@@ -11,6 +11,7 @@ tf = [0 120];
 tmax = tf(end);
 tmin = -20;
 x0 = [0 20 0];
+dt = 0.005;
 
 %% Parameters 
 
@@ -37,7 +38,6 @@ kmax = length(ti);
 
 
 str = cell(1,kmax);
-dt = 0.1;
 t = ti(1):dt:tf(end);
 Xs = cell(kmax,1);
 R0s = cell(kmax,1);
@@ -63,16 +63,21 @@ for j = 1:length(ti)
 end
 x = X;    
 
+%% Discretizacion
+
+idx = t==floor(t);
+T = t(idx);
+N_hat = N_hat(idx);
+N_sum = N_sum(idx);
+
 %% Calculo de los casos nuevos por d?a
 
-N_hat_obs = EstimDelay(N_hat,4,1,0.9);
+N_hat_obs = EstimDelay(N_hat,4,1,0.95);
 tau = 4;
 Rt_hat_obs = N_hat_obs./[NaN(tau,1) ; N_hat_obs(1:end-tau)];
 tau = 4;
-N_T = EstimDelay(N_sum,4,1,0.9);
+N_T = EstimDelay(N_sum,4,1,0.95);
 Rt_hat = N_T./[NaN(tau,1) ; N_T(1:end-tau)];
-idx = t==floor(t);
-T = t(idx);
 
 %% Visualization
 

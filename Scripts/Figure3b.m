@@ -11,6 +11,7 @@ tf = [0 360];
 tmax = tf(end);
 tmin = -20;
 nmax = 300; 
+dt = 0.1;
 
 %% Variables iniciales (default)
 % 
@@ -33,7 +34,6 @@ Rtcrit0 = fzero(@(Rt) maxVp(Pools(xi,nu,Rt,Gamma,lambda_s(end),lambda_r,0,epsilo
 
 %% Definici?n par?metros barrido
 
-dt = 0.1;
 t = ti(1):dt:tf(end);
 
 kmax = length(RT);
