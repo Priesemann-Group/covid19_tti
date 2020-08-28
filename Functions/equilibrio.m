@@ -10,12 +10,8 @@ Hse = Phi*fhse;
 He = (Phi/(Gamma*(Rt-1))) * (M*(1+Fep) - 1);
 Te = (Phi/(Gamma*(1-nu*Rt))) * M;
 
-nbt0 = lambda_s*Rt*Hse + lambda_r*Rt*He;
-if nbt0 >=nmax
-    ne = eta*nmax;
-else
-    ne = eta*nbt0;
-end
+ne = min(nmax,eta*(lambda_s*Rt*Hse + lambda_r*Rt*He));
+
 Neq = nu*Gamma*Rt*Te + lambda_s*Hse + lambda_r*He + ne;
 Neqcrit = nmax*(1+eta*Rt)/(eta*Rt*(1-nu*Rt));
 

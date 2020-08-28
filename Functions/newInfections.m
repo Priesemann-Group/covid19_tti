@@ -1,17 +1,12 @@
 function N = newInfections(t,X,Gamma,nu,Rt,lambda_s,lambda_r,nmax,eta)
 % obs X = [TSum HSum Hs];
-idx = t == floor(t);
-T = X(1,idx);
-Ht = X(2,idx);
-Hs = X(3,idx);
-nbt0 = lambda_s*Rt*Hs + lambda_r*Rt*Ht;
+T = X(1,:);
+Ht = X(2,:);
+Hs = X(3,:);
+nbt0 = eta*(lambda_s*Rt*Hs + lambda_r*Rt*Ht);
 ne = zeros(size(T));
-for i = 1:length(T)
-    if nbt0(i) >=nmax
-        ne(i) = eta*nmax;
-    else
-        ne(i) = eta*nbt0(i);
-    end
+for i = 1:length(nbt0)
+    ne(i) = min(nmax,nbt0(i));
 end
 N = nu*Gamma*Rt*T + lambda_s*Hs + lambda_r*Ht + ne;
 N = N';
