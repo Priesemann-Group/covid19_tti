@@ -8,10 +8,10 @@ Fxi = (1-xi);
 F1 =(nmax*(Rt*Fep + 1))-Phi;
 F2 = Gamma*(Rt-1)*fgl/Fxi;
 F3 = Rt*lambda_s*(1+Fep);
-Hse = F1/(F2+F3);
+Hse = F1/(F2-F3);
 He = ((lambda_s*Hse+nmax)/(Gamma*(Rt-1)))*((nu+epsilon)*Rt-1)/(nu*Rt-1)-Phi/(Gamma*(Rt-1));
 Te = -(lambda_s*Hse+nmax)/(Gamma*(nu*Rt-1));
 
 
-Neq = nu*Gamma*Rt*Te + lambda_s*Hse + lambda_r*He + ne;
-Neqcrit = Neq;%nmax*(1+eta*Rt)/(eta*Rt*(1-nu*Rt));
+Neq = nu*Gamma*Rt*Te + lambda_s*Hse + lambda_r*He + nmax;
+Neqcrit = Neq;
