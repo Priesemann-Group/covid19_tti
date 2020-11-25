@@ -1,0 +1,57 @@
+{
+    "description": "<p>Code repository for the paper&nbsp; &quot;The challenges of containing SARS-CoV-2 via test-trace-and-isolate&quot;</p>", 
+    "license": "GPL-2.0+", 
+    "title": "The challenges of containing SARS-CoV-2 via test-trace-and-isolate", 
+    "upload_type": "software", 
+    "communities": [
+        {
+            "identifier": "covid-19"
+        }, 
+        {
+            "identifier": "zenodo"
+        }
+    ], 
+    "creators": [
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "Sebastian Contreras"
+        }, 
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "Jonas Dehning"
+        }, 
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "Matthias Loidolt"
+        }, 
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "Johannes Zierenberg"
+        }, 
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "F. Paul Spitzner"
+        }, 
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "Jorge H. Urrea-Quintero"
+        }, 
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "Sebastian B. Mohr"
+        }, 
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "Michael Wilczek"
+        }, 
+        {
+            "affiliation": "Universit\u00e4t G\u00f6ttingen", 
+            "name": "Michael Wibral"
+        }, 
+        {
+            "affiliation": "Max Planck Institute for Dynamics and Self-Organization", 
+            "name": "Viola Priesemann"
+        }
+    ], 
+    "access_right": "open"
+}
