@@ -5,3 +5,5 @@ Repository of scripts and functions for generating figures and data of the relat
 ## Simulation platform 
 
 An interactive platform for simulating scenarios is available: [covid19-tti.ds.mpg.de](http://covid19-tti.ds.mpg.de/)
+
+The sourcecode for the website is available [here](https://github.com/semohr/covid19_testing).
