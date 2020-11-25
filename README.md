@@ -4,4 +4,4 @@ Repository of scripts and functions for generating figures and data of the relat
 
 ## Simulation platform 
 
-A beta version of an interactive platform for simulating scenarios is available: [covid19-tti.ds.mpg.de](http://covid19-tti.ds.mpg.de/)
+An interactive platform for simulating scenarios is available: [covid19-tti.ds.mpg.de](http://covid19-tti.ds.mpg.de/)
